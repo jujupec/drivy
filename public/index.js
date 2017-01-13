@@ -170,7 +170,7 @@ function generateprice() {
     var i;
     var j;
     var pr;
-    for (i=0; i<3; i++){
+    for (i=0; i<rentals.length; i++){
         pr=new Date(rentals[i].returnDate) - new Date(rentals[i].pickupDate);
         if (pr==0){
             pr=1;
@@ -179,7 +179,7 @@ function generateprice() {
             pr=pr/24/3600/1000;
         }
 
-        for (j=0; j<3;j++){
+        for (j=0; j<cars.length;j++){
             if (cars[j].id==rentals[i].carId){
                 rentals[i].price=pr*cars[j].pricePerDay+rentals[i].distance*cars[j].pricePerKm;
             }
