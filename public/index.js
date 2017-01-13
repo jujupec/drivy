@@ -165,6 +165,12 @@ var rentalModifications = [{
   'pickupDate': '2015-12-05'
 }];
 
+function calculdate (){
+    int i=0;
+    for
+
+}
+
 console.log(cars);
 console.log(rentals);
 console.log(actors);
