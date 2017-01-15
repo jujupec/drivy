@@ -177,14 +177,40 @@ function generateprice() {
         }
         else{
             pr=pr/24/3600/1000;
+
         }
 
-        for (j=0; j<cars.length;j++){
-            if (cars[j].id==rentals[i].carId){
-                rentals[i].price=pr*cars[j].pricePerDay+rentals[i].distance*cars[j].pricePerKm;
+        if (pr==1){
+            for (j=0; j<cars.length;j++){
+                        if (cars[j].id==rentals[i].carId){
+                            rentals[i].price=pr*cars[j].pricePerDay+rentals[i].distance*cars[j].pricePerKm;
+                        }
+             }
+        }
+         else if(pr>1 && pr<=4){
+            for (j=0; j<cars.length;j++){
+                        if (cars[j].id==rentals[i].carId){
+                            rentals[i].price=pr*cars[j].pricePerDay*0.9+rentals[i].distance*cars[j].pricePerKm;
+                        }
             }
+         }
 
-        }
+         else if(pr>4 && pr<=10){
+            for (j=0; j<cars.length;j++){
+                        if (cars[j].id==rentals[i].carId){
+                             rentals[i].price=pr*cars[j].pricePerDay*0.7+rentals[i].distance*cars[j].pricePerKm;
+                        }
+            }
+         }
+
+         else if(pr>10){
+            for (j=0; j<cars.length;j++){
+                        if (cars[j].id==rentals[i].carId){
+                              rentals[i].price=pr*cars[j].pricePerDay*0.5+rentals[i].distance*cars[j].pricePerKm;
+                        }
+
+            }
+         }
 
     }
 
@@ -197,3 +223,4 @@ console.log(cars);
 console.log(rentals);
 console.log(actors);
 console.log(rentalModifications);
+
