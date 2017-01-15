@@ -217,6 +217,7 @@ function generateprice() {
 
 }
 
+
 generateprice();
 
 console.log(cars);
