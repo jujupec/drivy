@@ -176,7 +176,7 @@ function generateprice() {
             pr=1;
         }
         else{
-            pr=pr/24/3600/1000;
+            pr=pr/24/3600/1000+1;
 
         }
 
@@ -217,8 +217,20 @@ function generateprice() {
 
 }
 
+function generatecommission(){
+    var i;
+
+    for (i=0; i<rentals.length; i++){
+            rentals[i].commission.insurance=0.3*rentals[i].price*0.5;
+            rentals[i].commission.assistance=((new Date(rentals[i].returnDate) - new Date(rentals[i].pickupDate))/24/3600/1000)+1;
+            rentals[i].commission.drivy=0.3*rentals[i].price-rentals[i].commission.insurance-rentals[i].commission.assistance
+    }
+
+}
+
 
 generateprice();
+generatecommission();
 
 console.log(cars);
 console.log(rentals);
