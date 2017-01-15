@@ -248,7 +248,6 @@ function deductible(){
 
 
 
-
 generateprice();
 generatecommission();
 deductible();
