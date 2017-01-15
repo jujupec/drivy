@@ -241,16 +241,55 @@ function deductible(){
         }
 
     }
-
-
-
 }
 
+//exercice5
+
+function payactor(){
+    var i;
+    var j;
+    var k;
+    for (i=0; i<actors.length; i++){
+        for(j=0;j<rentals.length;j++){
+            if (rentals[j].id==actors[i].rentalId){
+                for (k=0;k<actors[i].payment.length;k++){
+                    switch(actors[i].payment[k].who){
+                        case "driver":
+                            actors[i].payment[k].amount=rentals[j].price;
+                            break;
+
+                        case "owner":
+                            actors[i].payment[k].amount=rentals[j].price-rentals[j].commission.insurance-rentals[j].commission.assistance-rentals[j].commission.drivy;
+                            break;
+
+                        case "insurance":
+                            actors[i].payment[k].amount=rentals[j].commission.insurance;
+                            break;
+
+                        case "assistance":
+                            actors[i].payment[k].amount=rentals[j].commission.assistance;
+                            break;
+
+                        case "drivy":
+                            actors[i].payment[k].amount=rentals[j].commission.drivy;
+                            break;
+
+                         default :
+                         break;
+
+                    }
+                }
+            }
+        }
+    }
+}
 
 
 generateprice();
 generatecommission();
 deductible();
+payactor();
+
 console.log(cars);
 console.log(rentals);
 console.log(actors);
