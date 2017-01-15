@@ -284,11 +284,53 @@ function payactor(){
     }
 }
 
+//exercice 6
+
+function modifications(){
+    var i;
+    var j;
+    var k;
+    var properties;
+
+    for (i=0; i<rentalModifications.length; i++){
+        properties=Object.getOwnPropertyNames(rentalModifications[i]).sort();
+
+        for (j=0; j<rentals.length;j++){
+            if(rentalModifications[i].rentalId==rentals[j].id){
+                for (k=0;k<properties.length;k++){
+                    switch(properties[k]){
+                        case "pickupDate":
+                            rentals[j].pickupDate=rentalModifications[i].pickupDate;
+                            break;
+
+                        case "returnDate":
+                            rentals[j].returnDate=rentalModifications[i].returnDate;
+                            break;
+
+                        case "distance":
+                            rentals[j].distance=rentalModifications[i].distance;
+                            break;
+
+
+                        default :
+                            break;
+                    }
+                }
+            }
+        }
+    }
+    generateprice();
+    generatecommission();
+    deductible();
+    payactor();
+}
+
 
 generateprice();
 generatecommission();
 deductible();
 payactor();
+modifications();
 
 console.log(cars);
 console.log(rentals);
