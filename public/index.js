@@ -165,7 +165,7 @@ var rentalModifications = [{
   'pickupDate': '2015-12-05'
 }];
 
-
+//exercice 1 and 2
 function generateprice() {
     var i;
     var j;
@@ -217,6 +217,7 @@ function generateprice() {
 
 }
 
+//exercice 3
 function generatecommission(){
     var i;
 
@@ -228,10 +229,29 @@ function generatecommission(){
 
 }
 
+//exercice 4
+
+function deductible(){
+    var i;
+
+    for (i=0; i<rentals.length; i++){
+        if(rentals[i].options.deductibleReduction){
+            rentals[i].price+=4*(((new Date(rentals[i].returnDate) - new Date(rentals[i].pickupDate))/24/3600/1000)+1);
+            rentals[i].commission.drivy+=4*(((new Date(rentals[i].returnDate) - new Date(rentals[i].pickupDate))/24/3600/1000)+1);
+        }
+
+    }
+
+
+
+}
+
+
+
 
 generateprice();
 generatecommission();
-
+deductible();
 console.log(cars);
 console.log(rentals);
 console.log(actors);
